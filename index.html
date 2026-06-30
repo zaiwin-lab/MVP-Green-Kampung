@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Green Kampung Challenge — DBKU · Kuching Utara</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green: #22c55e;
+  --green-deep: #16a34a;
+  --leaf: #4ade80;
+  --earth: #f59e0b;
+  --earth-deep: #d97706;
+  --coral: #fb7185;
+  --ink: #1a3a2a;
+  --muted: #5b7570;
+  --cream: #fbfdf9;
+  --white: #ffffff;
+  --paper: #f3fbf2;
+  --sky: #eafff2;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Poppins', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
+h1, h2, h3, .display { font-family: 'Baloo 2', sans-serif; }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 76px;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(34,197,94,0.12);
+  transition: all 0.3s;
+}
+
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+
+.nav-logo .leaf-mark {
+  width: 40px; height: 40px;
+  background: linear-gradient(140deg, var(--green), var(--green-deep));
+  border-radius: 50% 0 50% 50%;
+  transform: rotate(-30deg);
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(34,197,94,0.4);
+  animation: bob 3s ease-in-out infinite;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+}
+
+@keyframes bob {
+  0%,100% { transform: rotate(-30deg) translateY(0); }
+  50% { transform: rotate(-30deg) translateY(-4px); }
+}
+
+.nav-logo span { font-family: 'Baloo 2', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--ink); }
+.nav-logo span em { color: var(--green-deep); font-style: normal; }
+
+.nav-links { display: flex; align-items: center; gap: 1.8rem; list-style: none; }
+.nav-links a { color: var(--muted); text-decoration: none; font-size: 0.88rem; font-weight: 600; transition: color 0.2s; }
+.nav-links a:hover { color: var(--green-deep); }
+
+.lang-toggle { display: flex; gap: 4px; background: var(--paper); border: 1px solid rgba(34,197,94,0.2); border-radius: 25px; padding: 4px; }
+.lang-btn { padding: 5px 11px; border-radius: 20px; border: none; background: transparent; color: var(--muted); font-size: 0.72rem; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+.lang-btn.active { background: var(--green); color: white; box-shadow: 0 2px 8px rgba(34,197,94,0.4); }
+
+.nav-cta {
+  background: linear-gradient(135deg, var(--earth), var(--earth-deep));
+  color: white !important; padding: 10px 20px; border-radius: 25px;
+  font-weight: 700 !important; font-size: 0.85rem !important;
+  box-shadow: 0 4px 14px rgba(245,158,11,0.35);
+}
+.nav-cta:hover { transform: translateY(-2px); color: white !important; }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh; position: relative;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; padding: 110px 2rem 4rem;
+  background: linear-gradient(180deg, #eafff2 0%, #f0fdf4 45%, #fefce8 100%);
+}
+
+.blob { position: absolute; border-radius: 50%; filter: blur(5px); opacity: 0.5; }
+.blob-1 { width: 340px; height: 340px; background: radial-gradient(circle, #bbf7d0, transparent 70%); top: -80px; left: -80px; }
+.blob-2 { width: 420px; height: 420px; background: radial-gradient(circle, #fde68a, transparent 70%); bottom: -120px; right: -100px; }
+.blob-3 { width: 260px; height: 260px; background: radial-gradient(circle, #d9f99d, transparent 70%); top: 40%; right: 6%; }
+
+.float-icon {
+  position: absolute; font-size: 2.2rem;
+  animation: floaty 6s ease-in-out infinite;
+  opacity: 0.85; filter: drop-shadow(0 6px 10px rgba(0,0,0,0.08));
+}
+@keyframes floaty {
+  0%,100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-18px) rotate(4deg); }
+}
+
+.hero-content { position: relative; z-index: 5; max-width: 900px; text-align: center; }
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: white; border: 2px dashed var(--green);
+  border-radius: 30px; padding: 8px 20px;
+  font-size: 0.8rem; font-weight: 700; color: var(--green-deep);
+  margin-bottom: 1.8rem; box-shadow: 0 4px 14px rgba(34,197,94,0.15);
+}
+
+.hero h1 { font-size: clamp(2.6rem, 6.5vw, 5rem); font-weight: 800; line-height: 1.08; margin-bottom: 1.2rem; color: var(--ink); }
+.hero h1 .highlight { background: linear-gradient(135deg, var(--green-deep), #15803d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+.hero-tagline { font-size: 1.15rem; color: var(--muted); margin: 0 auto 1rem; line-height: 1.7; max-width: 640px; font-weight: 500; }
+
+.hero-bm-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--earth), var(--coral));
+  color: white; font-weight: 700; font-size: 0.95rem;
+  padding: 10px 26px; border-radius: 40px; margin: 0.5rem 0 2rem;
+  box-shadow: 0 6px 18px rgba(245,158,11,0.3); transform: rotate(-2deg);
+}
+
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--green), var(--green-deep));
+  color: white; padding: 16px 32px; border-radius: 50px;
+  text-decoration: none; font-weight: 700; font-size: 0.95rem;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: all 0.3s; box-shadow: 0 8px 24px rgba(34,197,94,0.35);
+}
+.btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 30px rgba(34,197,94,0.45); }
+
+.btn-secondary {
+  background: white; color: var(--ink); padding: 16px 32px; border-radius: 50px;
+  text-decoration: none; font-weight: 700; font-size: 0.95rem;
+  border: 2px solid var(--green-deep);
+  display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s;
+}
+.btn-secondary:hover { background: var(--sky); transform: translateY(-3px); }
+
+.hero-mascots { display: flex; justify-content: center; gap: 0.6rem; margin-top: 2.5rem; flex-wrap: wrap; }
+.mascot-pill {
+  background: white; border-radius: 30px; padding: 8px 16px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06); font-size: 0.78rem; font-weight: 700;
+  color: var(--ink); display: flex; align-items: center; gap: 6px;
+}
+
+.scroll-indicator {
+  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  opacity: 0.6; animation: bounce 2s infinite; z-index: 10;
+}
+@keyframes bounce {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+.scroll-indicator span { font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.scroll-arrow { font-size: 1.2rem; color: var(--green-deep); }
+
+/* ─── PARTNERS STRIP ─── */
+.partners-strip { background: white; border-top: 1px solid rgba(34,197,94,0.1); border-bottom: 1px solid rgba(34,197,94,0.1); padding: 1.6rem 2rem; text-align: center; }
+.partners-strip p { font-size: 0.72rem; font-weight: 800; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 1rem; }
+.partners-logos { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; align-items: center; }
+.partner-logo-pill { background: var(--paper); border: 1px solid rgba(34,197,94,0.2); border-radius: 30px; padding: 8px 20px; font-size: 0.85rem; font-weight: 700; color: var(--ink); }
+
+/* ─── SECTION COMMONS ─── */
+section { padding: 5.5rem 2rem; }
+.container { max-width: 1200px; margin: 0 auto; }
+
+.section-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--paper); color: var(--green-deep);
+  font-size: 0.75rem; font-weight: 800; letter-spacing: 1.5px;
+  text-transform: uppercase; margin-bottom: 1.2rem;
+  padding: 6px 16px; border-radius: 20px;
+}
+
+.section-title { font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 800; line-height: 1.2; margin-bottom: 1rem; color: var(--ink); }
+.section-sub { color: var(--muted); font-size: 1.02rem; line-height: 1.75; max-width: 620px; font-weight: 500; }
+.center { text-align: center; margin-left: auto; margin-right: auto; }
+.text-green { color: var(--green-deep); }
+.text-earth { color: var(--earth-deep); }
+.text-coral { color: var(--coral); }
+
+/* ─── PILLARS ─── */
+.why-section { background: var(--white); }
+.pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+.pillar-card { background: var(--paper); border: 2px solid transparent; border-radius: 24px; padding: 2.2rem 1.6rem; text-align: center; transition: all 0.35s; cursor: default; }
+.pillar-card:hover { border-color: var(--green); transform: translateY(-8px) rotate(-1deg); box-shadow: 0 20px 40px rgba(34,197,94,0.18); background: white; }
+.pillar-icon { width: 76px; height: 76px; border-radius: 26px; display: flex; align-items: center; justify-content: center; font-size: 2.1rem; margin: 0 auto 1.2rem; }
+.pillar-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--ink); }
+.pillar-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
+
+/* ─── STATS STRIP ─── */
+.stats-strip { background: linear-gradient(135deg, #16a34a, #15803d); padding: 4rem 2rem; }
+.stats-strip .section-label { background: rgba(255,255,255,0.2); color: white; }
+.stats-strip .section-title { color: white; }
+.stats-strip .section-sub { color: rgba(255,255,255,0.85); }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.2rem; margin-top: 2.5rem; }
+.stat-card { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 1.8rem 1rem; text-align: center; backdrop-filter: blur(8px); transition: all 0.3s; }
+.stat-card:hover { transform: translateY(-6px); background: rgba(255,255,255,0.25); }
+.stat-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+.stat-num { font-size: 2.3rem; font-weight: 800; color: white; line-height: 1; margin-bottom: 0.3rem; font-family: 'Baloo 2', sans-serif; }
+.stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.9); font-weight: 600; }
+
+/* ─── TIMELINE / JOURNEY ─── */
+.journey { background: var(--sky); }
+.timeline { position: relative; margin-top: 3rem; }
+.timeline::before {
+  content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 4px;
+  background: repeating-linear-gradient(180deg, var(--green) 0 14px, transparent 14px 24px);
+  transform: translateX(-50%); border-radius: 4px;
+}
+.timeline-item { display: grid; grid-template-columns: 1fr 70px 1fr; gap: 1rem; margin-bottom: 2.5rem; align-items: center; }
+.timeline-item:nth-child(even) .tl-content { grid-column: 3; text-align: left; }
+.timeline-item:nth-child(odd) .tl-content { grid-column: 1; text-align: right; }
+.timeline-item .tl-dot { grid-column: 2; }
+.tl-content { background: white; border-radius: 20px; padding: 1.6rem; box-shadow: 0 6px 20px rgba(34,197,94,0.1); transition: all 0.3s; }
+.tl-content:hover { box-shadow: 0 12px 30px rgba(34,197,94,0.2); transform: translateY(-4px); }
+.tl-dot { width: 60px; height: 60px; background: linear-gradient(135deg, var(--green), var(--green-deep)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto; box-shadow: 0 0 0 6px white, 0 0 0 9px rgba(34,197,94,0.2); }
+.tl-phase { font-size: 0.72rem; font-weight: 800; letter-spacing: 1.5px; color: var(--green-deep); text-transform: uppercase; margin-bottom: 0.4rem; }
+.tl-content h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--ink); }
+.tl-content p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
+
+/* ─── CHALLENGES (toolkit equiv) ─── */
+.challenges { background: white; }
+.toolkit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+.toolkit-card { border-radius: 24px; padding: 2.2rem; text-decoration: none; color: var(--ink); transition: all 0.35s; display: block; border: 2px solid transparent; }
+.toolkit-card:hover { transform: translateY(-8px) rotate(-0.5deg); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: var(--green); }
+.tk-green { background: #effdf2; }
+.tk-amber { background: #fff8e6; }
+.tk-blue { background: #eaf8ff; }
+.tk-teal { background: #e6fbf8; }
+.tk-coral { background: #fff0f1; }
+.tk-purple { background: #f4f0ff; }
+.tk-icon { font-size: 2.6rem; margin-bottom: 1rem; display: block; }
+.toolkit-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; }
+.toolkit-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.2rem; }
+.tk-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tk-tag { background: white; border-radius: 20px; padding: 4px 12px; font-size: 0.72rem; font-weight: 700; color: var(--ink); box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
+
+/* ─── KJM DIRECTORY ─── */
+.directory { background: var(--paper); }
+.kjm-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; margin-top: 3rem; }
+.kjm-card {
+  background: white; border-radius: 18px; padding: 1.4rem 1rem;
+  text-align: center; transition: all 0.3s;
+  border: 2px solid transparent;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.kjm-card:hover { border-color: var(--green); transform: translateY(-6px); box-shadow: 0 16px 32px rgba(34,197,94,0.18); }
+.kjm-num { font-family: 'Baloo 2', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--green-deep); line-height: 1; margin-bottom: 0.3rem; }
+.kjm-name { font-size: 0.75rem; font-weight: 700; color: var(--ink); margin-bottom: 0.5rem; }
+.kjm-badge { display: inline-block; background: var(--paper); border-radius: 20px; padding: 3px 10px; font-size: 0.65rem; font-weight: 700; color: var(--green-deep); }
+
+/* ─── ACTIVITIES ─── */
+.activities { background: white; }
+.activities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+.activity-card { border-radius: 24px; overflow: hidden; background: white; box-shadow: 0 6px 20px rgba(0,0,0,0.06); transition: all 0.35s; }
+.activity-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(34,197,94,0.18); }
+.activity-img { height: 170px; display: flex; align-items: center; justify-content: center; font-size: 4.2rem; }
+.ai-green { background: linear-gradient(135deg, #bbf7d0, #effdf2); }
+.ai-amber { background: linear-gradient(135deg, #fde68a, #fff8e6); }
+.ai-blue { background: linear-gradient(135deg, #bae6fd, #eaf8ff); }
+.ai-teal { background: linear-gradient(135deg, #99f6e4, #e6fbf8); }
+.activity-body { padding: 1.6rem; }
+.activity-type { font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green-deep); margin-bottom: 0.5rem; }
+.activity-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.6rem; line-height: 1.3; color: var(--ink); }
+.activity-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+.activity-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee; }
+.activity-age { font-size: 0.74rem; color: var(--muted); font-weight: 500; }
+.activity-link { font-size: 0.8rem; font-weight: 700; color: var(--green-deep); text-decoration: none; }
+
+/* ─── ESG DASHBOARD ─── */
+.esg { background: var(--sky); }
+.esg-dashboard { background: white; border-radius: 28px; padding: 2.5rem; margin-top: 3rem; box-shadow: 0 10px 40px rgba(34,197,94,0.1); }
+.esg-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+.esg-title-block h3 { font-size: 1.3rem; font-weight: 700; color: var(--ink); }
+.esg-title-block p { font-size: 0.85rem; color: var(--muted); }
+.live-badge { display: flex; align-items: center; gap: 6px; background: #effdf2; border: 1px solid rgba(34,197,94,0.3); border-radius: 20px; padding: 6px 14px; font-size: 0.78rem; font-weight: 700; color: var(--green-deep); }
+.live-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: blink 1.5s infinite; }
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.2; } }
+.metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+.metric-box { background: var(--paper); border-radius: 18px; padding: 1.3rem; text-align: center; transition: all 0.3s; }
+.metric-box:hover { background: #eafff2; transform: translateY(-4px); }
+.metric-box .icon { font-size: 1.6rem; margin-bottom: 0.4rem; }
+.metric-box .number { font-size: 1.9rem; font-weight: 800; line-height: 1; margin-bottom: 0.2rem; font-family: 'Baloo 2', sans-serif; }
+.metric-box .label { font-size: 0.75rem; color: var(--muted); font-weight: 600; }
+.sdg-row { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #eee; }
+.sdg-badge { padding: 7px 16px; border-radius: 20px; font-size: 0.74rem; font-weight: 800; border: none; }
+
+/* ─── LEADERBOARD ─── */
+.leaderboard { background: white; }
+.lb-table { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
+.lb-row {
+  display: flex; align-items: center; gap: 1rem;
+  background: var(--paper); border-radius: 18px; padding: 1.2rem 1.6rem;
+  transition: all 0.3s;
+}
+.lb-row:hover { background: white; box-shadow: 0 8px 24px rgba(34,197,94,0.15); transform: translateX(6px); }
+.lb-rank { font-family: 'Baloo 2', sans-serif; font-size: 1.5rem; font-weight: 800; width: 40px; flex-shrink: 0; }
+.lb-rank.gold { color: #f59e0b; }
+.lb-rank.silver { color: #94a3b8; }
+.lb-rank.bronze { color: #c2784d; }
+.lb-info { flex: 1; }
+.lb-name { font-weight: 700; font-size: 0.95rem; color: var(--ink); }
+.lb-sub { font-size: 0.75rem; color: var(--muted); }
+.lb-score { text-align: right; }
+.lb-pts { font-family: 'Baloo 2', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--green-deep); }
+.lb-unit { font-size: 0.68rem; color: var(--muted); font-weight: 600; }
+.lb-bar-wrap { height: 6px; background: rgba(0,0,0,0.07); border-radius: 4px; margin-top: 0.4rem; flex: 1; }
+.lb-bar { height: 100%; background: linear-gradient(90deg, var(--green), var(--green-deep)); border-radius: 4px; }
+
+/* ─── GET INVOLVED ─── */
+.get-involved { background: var(--paper); }
+.involve-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; margin-top: 3rem; }
+.involve-card { padding: 2.2rem 1.6rem; border-radius: 22px; text-align: center; text-decoration: none; color: var(--ink); transition: all 0.35s; background: white; display: block; }
+.involve-card:hover { transform: translateY(-8px) rotate(-1deg); box-shadow: 0 16px 36px rgba(34,197,94,0.2); }
+.involve-icon { font-size: 2.6rem; margin-bottom: 1rem; }
+.involve-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; }
+.involve-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
+
+/* ─── CTA ─── */
+.cta-banner { background: linear-gradient(135deg, #fde68a 0%, #bbf7d0 50%, #d9f99d 100%); text-align: center; padding: 5rem 2rem; }
+.cta-banner h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem; color: var(--ink); }
+.cta-banner p { font-size: 1.05rem; color: var(--ink); opacity: 0.75; margin-bottom: 2rem; font-weight: 500; }
+.cta-banner .btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* ─── FOOTER ─── */
+footer { background: var(--ink); padding: 4rem 2rem 2rem; color: white; }
+.footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.65); line-height: 1.7; margin: 1rem 0; }
+.footer-tagline { font-size: 0.8rem; color: var(--earth); font-weight: 700; }
+.footer-col h4 { font-size: 0.8rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.footer-col a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.86rem; transition: color 0.2s; }
+.footer-col a:hover { color: var(--green); }
+.footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; gap: 1rem; }
+.footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+.footer-partners { display: flex; gap: 1rem; align-items: center; }
+.partner-pill { background: rgba(255,255,255,0.08); border-radius: 20px; padding: 4px 14px; font-size: 0.74rem; font-weight: 700; color: rgba(255,255,255,0.7); }
+
+/* ─── ANIMATIONS ─── */
+.fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── KOBIS BAR ─── */
+.kobis-bar { background: #0f3b2e; color: rgba(255,255,255,0.7); text-align: center; padding: 8px 2rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; }
+.kobis-bar a { color: var(--green); text-decoration: none; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) { .toolkit-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) {
+  .timeline::before { left: 30px; }
+  .timeline-item { grid-template-columns: 60px 1fr; }
+  .timeline-item:nth-child(odd) .tl-content,
+  .timeline-item:nth-child(even) .tl-content { grid-column: 2; text-align: left; }
+  .timeline-item .tl-dot { grid-column: 1; }
+  .toolkit-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .nav-links { display: none; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .kjm-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+}
+
+/* ─── LANGUAGE ─── */
+[data-lang] { display: none; }
+[data-lang].lang-active { display: inline; }
+div[data-lang].lang-active, p[data-lang].lang-active { display: block; }
+</style>
+</head>
+<body>
+
+<!-- KOBIS TOP BAR -->
+<div class="kobis-bar">
+  🌿 A KOBIS Berhad ESG Platform Initiative · Powered by <a href="#">KOBIS Digital</a>
+</div>
+
+<!-- ═══════════════════════════════ NAV ═══════════════════════════════ -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="leaf-mark">🌿</div>
+    <span>MY <em>GREEN KAMPUNG</em></span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#about"><span data-lang="en" class="lang-active">About</span><span data-lang="bm">Tentang</span></a></li>
+    <li><a href="#challenges"><span data-lang="en" class="lang-active">Challenges</span><span data-lang="bm">Cabaran</span></a></li>
+    <li><a href="#directory"><span data-lang="en" class="lang-active">KJM Directory</span><span data-lang="bm">Direktori KJM</span></a></li>
+    <li><a href="#leaderboard"><span data-lang="en" class="lang-active">Leaderboard</span><span data-lang="bm">Papan Markah</span></a></li>
+    <li><a href="#esg"><span data-lang="en" class="lang-active">ESG Impact</span><span data-lang="bm">Impak ESG</span></a></li>
+    <li><a href="#involve" class="nav-cta"><span data-lang="en" class="lang-active">Join Challenge 🌱</span><span data-lang="bm">Sertai Cabaran 🌱</span></a></li>
+  </ul>
+
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('bm')">BM</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <div class="float-icon" style="top:18%;left:8%;">🌳</div>
+  <div class="float-icon" style="top:62%;left:6%;animation-delay:1s;">🌺</div>
+  <div class="float-icon" style="top:24%;right:9%;animation-delay:2s;">♻️</div>
+  <div class="float-icon" style="top:70%;right:10%;animation-delay:1.5s;">🏡</div>
+  <div class="float-icon" style="top:46%;left:14%;animation-delay:0.5s;">🌿</div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span data-lang="en" class="lang-active">🏘️ DBKU Community Sustainability Programme · 54 KJM Communities · Kuching Utara</span>
+      <span data-lang="bm">🏘️ Program Kelestarian Komuniti DBKU · 54 Komuniti KJM · Kuching Utara</span>
+    </div>
+
+    <h1>
+      <span data-lang="en" class="lang-active">My <span class="highlight">Green Kampung</span> Challenge 🌿</span>
+      <span data-lang="bm">Cabaran <span class="highlight">Kampung Hijau</span> Saya 🌿</span>
+    </h1>
+
+    <p class="hero-tagline" data-lang="en" style="display:block;">
+      Building greener, cleaner and more liveable communities together — through the power of 54 Kejiranan Mesra communities in Kuching Utara.
+    </p>
+    <p class="hero-tagline" data-lang="bm">
+      Membina komuniti yang lebih hijau, bersih dan selesa bersama — melalui kekuatan 54 komuniti Kejiranan Mesra di Kuching Utara.
+    </p>
+
+    <div>
+      <span class="hero-bm-badge">✨ Bersih. Hijau. Mesra. Bersama.</span>
+    </div>
+
+    <div class="hero-btns">
+      <a href="#challenges" class="btn-primary">
+        <span data-lang="en" class="lang-active">🌱 Explore Green Challenges</span>
+        <span data-lang="bm">🌱 Terokai Cabaran Hijau</span>
+      </a>
+      <a href="#directory" class="btn-secondary">
+        <span data-lang="en" class="lang-active">🗺️ View KJM Directory</span>
+        <span data-lang="bm">🗺️ Lihat Direktori KJM</span>
+      </a>
+    </div>
+
+    <div class="hero-mascots">
+      <span class="mascot-pill">🏘️ 54 KJM Communities</span>
+      <span class="mascot-pill">👨‍👩‍👧 Residents & Families</span>
+      <span class="mascot-pill">🌿 Youth Leaders</span>
+      <span class="mascot-pill">🏛️ DBKU Programme</span>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <span>Scroll to Explore</span>
+    <div class="scroll-arrow">↓</div>
+  </div>
+</section>
+
+<!-- ═══════════════════ PARTNERS STRIP ═══════════════════ -->
+<div class="partners-strip">
+  <p>
+    <span data-lang="en" class="lang-active">Proudly powered by</span>
+    <span data-lang="bm">Dengan bangga disokong oleh</span>
+  </p>
+  <div class="partners-logos">
+    <div class="partner-logo-pill">🏛️ DBKU</div>
+    <div class="partner-logo-pill">🌿 KOBIS Berhad</div>
+    <div class="partner-logo-pill">🤝 KJM Community Leaders</div>
+    <div class="partner-logo-pill">🏫 Schools & Youth</div>
+    <div class="partner-logo-pill">🏢 Corporate CSR Partners</div>
+    <div class="partner-logo-pill">💚 Community NGOs</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ ABOUT / PILLARS ═══════════════════ -->
+<section class="why-section" id="about">
+  <div class="container center" style="max-width:700px;">
+    <div class="section-label">Why It Matters</div>
+    <h2 class="section-title">
+      <span data-lang="en" class="lang-active">Our neighbourhoods deserve to <span class="text-green">thrive</span> 🌳</span>
+      <span data-lang="bm">Kejiranan kita layak untuk <span class="text-green">berkembang maju</span> 🌳</span>
+    </h2>
+    <p class="section-sub center">
+      <span data-lang="en" class="lang-active">My Green Kampung Challenge empowers every KJM community in Kuching Utara to become cleaner, greener, safer, smarter and more sustainable — together.</span>
+      <span data-lang="bm">Cabaran Kampung Hijau Saya memperkasakan setiap komuniti KJM di Kuching Utara untuk menjadi lebih bersih, hijau, selamat, pintar dan mampan — bersama-sama.</span>
+    </p>
+  </div>
+
+  <div class="container">
+    <div class="pillars-grid">
+      <div class="pillar-card fade-up">
+        <div class="pillar-icon" style="background:#effdf2;">🧹</div>
+        <h3><span data-lang="en" class="lang-active">Cleaner Neighbourhoods</span><span data-lang="bm">Kejiranan Lebih Bersih</span></h3>
+        <p><span data-lang="en" class="lang-active">Monthly clean-up drives, waste management awareness and zero-litter campaigns across all KJM areas.</span><span data-lang="bm">Program gotong royong bulanan, kesedaran pengurusan sisa dan kempen sifar sampah di semua kawasan KJM.</span></p>
+      </div>
+      <div class="pillar-card fade-up">
+        <div class="pillar-icon" style="background:#fff8e6;">🌳</div>
+        <h3><span data-lang="en" class="lang-active">Urban Greening</span><span data-lang="bm">Penggrenan Bandar</span></h3>
+        <p><span data-lang="en" class="lang-active">Tree planting, community gardens, vertical gardens and beautification projects that transform neighbourhoods.</span><span data-lang="bm">Penanaman pokok, taman komuniti, taman menegak dan projek kecantikan yang mengubah kejiranan.</span></p>
+      </div>
+      <div class="pillar-card fade-up">
+        <div class="pillar-icon" style="background:#eaf8ff;">♻️</div>
+        <h3><span data-lang="en" class="lang-active">Green Living</span><span data-lang="bm">Cara Hidup Hijau</span></h3>
+        <p><span data-lang="en" class="lang-active">Recycling drives, composting, plastic-free campaigns and sustainable lifestyle adoption at the household level.</span><span data-lang="bm">Program kitar semula, pengkomposan, kempen bebas plastik dan penggunaan gaya hidup mampan di peringkat isi rumah.</span></p>
+      </div>
+      <div class="pillar-card fade-up">
+        <div class="pillar-icon" style="background:#e6fbf8;">👨‍👩‍👧</div>
+        <h3><span data-lang="en" class="lang-active">Community Participation</span><span data-lang="bm">Penyertaan Komuniti</span></h3>
+        <p><span data-lang="en" class="lang-active">Residents, youth, seniors and families all playing active roles in shaping a better neighbourhood.</span><span data-lang="bm">Penduduk, belia, warga emas dan keluarga memainkan peranan aktif dalam membentuk kejiranan yang lebih baik.</span></p>
+      </div>
+      <div class="pillar-card fade-up">
+        <div class="pillar-icon" style="background:#f4f0ff;">📊</div>
+        <h3><span data-lang="en" class="lang-active">ESG Accountability</span><span data-lang="bm">Akauntabiliti ESG</span></h3>
+        <p><span data-lang="en" class="lang-active">Measurable green scores for each KJM, aligned to UN SDGs and DBKU's Together We Care vision.</span><span data-lang="bm">Skor hijau yang terukur bagi setiap KJM, selaras dengan SDG PBB dan visi Bersama Kita Prihatin DBKU.</span></p>
+      </div>
+      <div class="pillar-card fade-up">
+        <div class="pillar-icon" style="background:#fff0f1;">🏆</div>
+        <h3><span data-lang="en" class="lang-active">Recognition & Awards</span><span data-lang="bm">Pengiktirafan & Anugerah</span></h3>
+        <p><span data-lang="en" class="lang-active">Monthly Green Kampung Champion, Best Youth Team, and annual DBKU Green Community Awards.</span><span data-lang="bm">Juara Kampung Hijau Bulanan, Pasukan Belia Terbaik, dan Anugerah Komuniti Hijau DBKU tahunan.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ PROGRAMME JOURNEY ═══════════════════ -->
+<section class="journey" id="journey">
+  <div class="container center" style="max-width:700px;">
+    <div class="section-label">
+      <span data-lang="en" class="lang-active">Programme Roadmap</span>
+      <span data-lang="bm">Pelan Hala Tuju Program</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang="en" class="lang-active">The <span class="text-green">Green Kampung</span> Journey 🗺️</span>
+      <span data-lang="bm">Perjalanan <span class="text-green">Kampung Hijau</span> 🗺️</span>
+    </h2>
+    <p class="section-sub center">
+      <span data-lang="en" class="lang-active">A phased community transformation from awareness to a lasting legacy of green living.</span>
+      <span data-lang="bm">Transformasi komuniti berperingkat dari kesedaran kepada warisan hidup hijau yang berkekalan.</span>
+    </p>
+  </div>
+
+  <div class="container">
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="tl-content fade-up">
+          <div class="tl-phase"><span data-lang="en" class="lang-active">Phase 1 · Foundation</span><span data-lang="bm">Fasa 1 · Asas</span></div>
+          <h3><span data-lang="en" class="lang-active">🌱 Awareness & Community Activation</span><span data-lang="bm">🌱 Kesedaran & Pengaktifan Komuniti</span></h3>
+          <p><span data-lang="en" class="lang-active">KJM Leaders onboarding, Green Score baseline assessment, first community clean-up drives and tree planting kick-off events.</span><span data-lang="bm">Penerimaan pemimpin KJM, penilaian asas Skor Hijau, gotong royong komuniti pertama dan acara permulaan penanaman pokok.</span></p>
+        </div>
+        <div class="tl-dot">🌱</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-content fade-up">
+          <div class="tl-phase"><span data-lang="en" class="lang-active">Phase 2 · Action</span><span data-lang="bm">Fasa 2 · Tindakan</span></div>
+          <h3><span data-lang="en" class="lang-active">🏆 Monthly Green Challenges Launch</span><span data-lang="bm">🏆 Pelancaran Cabaran Hijau Bulanan</span></h3>
+          <p><span data-lang="en" class="lang-active">All 54 KJM communities competing monthly. Recycling drives, beautification projects, youth leadership activities and community gardening.</span><span data-lang="bm">Semua 54 komuniti KJM bersaing setiap bulan. Program kitar semula, projek kecantikan, aktiviti kepimpinan belia dan berkebun komuniti.</span></p>
+        </div>
+        <div class="tl-dot">🏆</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-content fade-up">
+          <div class="tl-phase"><span data-lang="en" class="lang-active">Phase 3 · Measurement</span><span data-lang="bm">Fasa 3 · Pengukuran</span></div>
+          <h3><span data-lang="en" class="lang-active">📊 Green Score Dashboard Goes Live</span><span data-lang="bm">📊 Papan Pemuka Skor Hijau Dilancarkan</span></h3>
+          <p><span data-lang="en" class="lang-active">Real-time ESG tracking per KJM. Leaderboard published. DBKU Green Community recognition ceremony. Corporate CSR partnerships activated.</span><span data-lang="bm">Penjejakan ESG masa nyata bagi setiap KJM. Papan pendahulu diterbitkan. Majlis pengiktirafan Komuniti Hijau DBKU. Perkongsian CSR korporat diaktifkan.</span></p>
+        </div>
+        <div class="tl-dot">📊</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-content fade-up">
+          <div class="tl-phase"><span data-lang="en" class="lang-active">Phase 4 · Legacy</span><span data-lang="bm">Fasa 4 · Legasi</span></div>
+          <h3><span data-lang="en" class="lang-active">🚀 Smart Green Community Platform</span><span data-lang="bm">🚀 Platform Komuniti Hijau Pintar</span></h3>
+          <p><span data-lang="en" class="lang-active">AI-powered photo recognition, Green Points system, annual awards gala, and replication across other Sarawak municipalities.</span><span data-lang="bm">Pengecaman foto berkuasa AI, sistem Mata Hijau, majlis anugerah tahunan, dan replikasi ke perbandaran Sarawak yang lain.</span></p>
+        </div>
+        <div class="tl-dot">🚀</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ MONTHLY GREEN CHALLENGES ═══════════════════ -->
+<section class="challenges" id="challenges">
+  <div class="container center" style="max-width:700px;">
+    <div class="section-label">
+      <span data-lang="en" class="lang-active">Monthly Green Challenges</span>
+      <span data-lang="bm">Cabaran Hijau Bulanan</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang="en" class="lang-active">Pick your challenge. <span class="text-green">Earn your points.</span> 🌿</span>
+      <span data-lang="bm">Pilih cabaran anda. <span class="text-green">Earn mata anda.</span> 🌿</span>
+    </h2>
+    <p class="section-sub center">
+      <span data-lang="en" class="lang-active">Every month, KJM communities compete across 6 exciting green challenge categories. Points are tracked, winners are celebrated.</span>
+      <span data-lang="bm">Setiap bulan, komuniti KJM bersaing dalam 6 kategori cabaran hijau yang menarik. Mata dijejak, pemenang dirai.</span>
+    </p>
+  </div>
+
+  <div class="container">
+    <div class="toolkit-grid">
+      <div class="toolkit-card tk-green fade-up">
+        <span class="tk-icon">🧹</span>
+        <h3><span data-lang="en" class="lang-active">Clean-Up Challenge</span><span data-lang="bm">Cabaran Gotong Royong</span></h3>
+        <p><span data-lang="en" class="lang-active">Mobilise your KJM for a community clean-up. Most volunteers and waste collected wins maximum Green Points.</span><span data-lang="bm">Mobilisasikan KJM anda untuk gotong royong komuniti. Paling ramai sukarelawan dan sisa dikutip menang mata Hijau maksimum.</span></p>
+        <div class="tk-tags"><span class="tk-tag">🗓️ Monthly</span><span class="tk-tag">👥 All ages</span><span class="tk-tag">🏆 50 pts</span></div>
+      </div>
+
+      <div class="toolkit-card tk-amber fade-up">
+        <span class="tk-icon">🌳</span>
+        <h3><span data-lang="en" class="lang-active">Tree Planting Drive</span><span data-lang="bm">Program Penanaman Pokok</span></h3>
+        <p><span data-lang="en" class="lang-active">Plant native trees across your neighbourhood. Document, track survival rate, and earn Green Points for every tree that grows.</span><span data-lang="bm">Tanam pokok asli di seluruh kejiranan anda. Dokumenkan, jejak kadar kelangsungan, dan earn mata Hijau bagi setiap pokok yang membesar.</span></p>
+        <div class="tk-tags"><span class="tk-tag">🌱 Quarterly</span><span class="tk-tag">🌳 Native species</span><span class="tk-tag">🏆 60 pts</span></div>
+      </div>
+
+      <div class="toolkit-card tk-blue fade-up">
+        <span class="tk-icon">♻️</span>
+        <h3><span data-lang="en" class="lang-active">Recycling Race</span><span data-lang="bm">Lumba Kitar Semula</span></h3>
+        <p><span data-lang="en" class="lang-active">Which KJM can recycle the most? Track plastic, paper, glass and e-waste. Top recycler earns the Green Champion badge.</span><span data-lang="bm">KJM mana yang boleh kitar semula paling banyak? Jejak plastik, kertas, kaca dan e-sisa. Pemegang kitar teratas menang lencana Juara Hijau.</span></p>
+        <div class="tk-tags"><span class="tk-tag">📊 Tracked</span><span class="tk-tag">♻️ Verified</span><span class="tk-tag">🏆 40 pts</span></div>
+      </div>
+
+      <div class="toolkit-card tk-teal fade-up">
+        <span class="tk-icon">🌺</span>
+        <h3><span data-lang="en" class="lang-active">Beautification Project</span><span data-lang="bm">Projek Kecantikan</span></h3>
+        <p><span data-lang="en" class="lang-active">Transform an empty lot, a corridor, or a common area. Before & after photos judged by DBKU panel. Community votes count too!</span><span data-lang="bm">Ubah suai lot kosong, koridor, atau kawasan awam. Foto sebelum & selepas dinilai panel DBKU. Undian komuniti juga dikira!</span></p>
+        <div class="tk-tags"><span class="tk-tag">📸 Photo judged</span><span class="tk-tag">🗳️ Community vote</span><span class="tk-tag">🏆 70 pts</span></div>
+      </div>
+
+      <div class="toolkit-card tk-coral fade-up">
+        <span class="tk-icon">🧑‍🌾</span>
+        <h3><span data-lang="en" class="lang-active">Community Garden</span><span data-lang="bm">Kebun Komuniti</span></h3>
+        <p><span data-lang="en" class="lang-active">Start or grow a community garden. Vegetables, herbs, fruits — shared by all residents. Points awarded for yield and participation.</span><span data-lang="bm">Mula atau kembangkan kebun komuniti. Sayuran, herba, buah-buahan — dikongsi oleh semua penduduk. Mata diberikan untuk hasil dan penyertaan.</span></p>
+        <div class="tk-tags"><span class="tk-tag">🥦 Organic</span><span class="tk-tag">🤝 Shared</span><span class="tk-tag">🏆 55 pts</span></div>
+      </div>
+
+      <div class="toolkit-card tk-purple fade-up">
+        <span class="tk-icon">💡</span>
+        <h3><span data-lang="en" class="lang-active">Green Innovation</span><span data-lang="bm">Inovasi Hijau</span></h3>
+        <p><span data-lang="en" class="lang-active">Got a creative green idea? Composting system, rainwater harvesting, solar lighting. Propose, implement, and win the Innovation Award.</span><span data-lang="bm">Ada idea hijau yang kreatif? Sistem pengkomposan, penuaian air hujan, pencahayaan solar. Cadang, laksana, dan menang Anugerah Inovasi.</span></p>
+        <div class="tk-tags"><span class="tk-tag">💡 Open category</span><span class="tk-tag">🏅 Special award</span><span class="tk-tag">🏆 80 pts</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ ACTIVITIES ═══════════════════ -->
+<section class="activities" id="activities">
+  <div class="container center" style="max-width:700px;">
+    <div class="section-label">
+      <span data-lang="en" class="lang-active">Upcoming Activities</span>
+      <span data-lang="bm">Aktiviti Akan Datang</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang="en" class="lang-active">Get your community <span class="text-earth">moving</span> 🏃</span>
+      <span data-lang="bm">Gerakkan komuniti <span class="text-earth">anda</span> 🏃</span>
+    </h2>
+    <p class="section-sub center">
+      <span data-lang="en" class="lang-active">From weekend clean-ups to annual award ceremonies — there's always something happening in our Green Kampung communities.</span>
+      <span data-lang="bm">Dari gotong royong hujung minggu hingga majlis anugerah tahunan — sentiasa ada sesuatu yang berlaku dalam komuniti Kampung Hijau kami.</span>
+    </p>
+  </div>
+
+  <div class="container">
+    <div class="activities-grid">
+      <div class="activity-card fade-up">
+        <div class="activity-img ai-green">🧹</div>
+        <div class="activity-body">
+          <div class="activity-type">Community Action</div>
+          <h3><span data-lang="en" class="lang-active">July Gotong Royong Week</span><span data-lang="bm">Minggu Gotong Royong Julai</span></h3>
+          <p><span data-lang="en" class="lang-active">All 54 KJM communities clean up simultaneously across Kuching Utara. The biggest community day of the year!</span><span data-lang="bm">Semua 54 komuniti KJM membersihkan secara serentak di seluruh Kuching Utara. Hari komuniti terbesar tahun ini!</span></p>
+          <div class="activity-footer">
+            <span class="activity-age">July 2025 · All KJM</span>
+            <a href="#" class="activity-link">Register →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="activity-card fade-up">
+        <div class="activity-img ai-amber">🌳</div>
+        <div class="activity-body">
+          <div class="activity-type">Green Challenge</div>
+          <h3><span data-lang="en" class="lang-active">1,000 Trees in 1 Day</span><span data-lang="bm">1,000 Pokok dalam 1 Hari</span></h3>
+          <p><span data-lang="en" class="lang-active">A Kuching Utara-wide tree planting event. Each KJM plants in their neighbourhood. Together we reach 1,000 trees!</span><span data-lang="bm">Acara penanaman pokok seluruh Kuching Utara. Setiap KJM menanam di kejiranan mereka. Bersama kita capai 1,000 pokok!</span></p>
+          <div class="activity-footer">
+            <span class="activity-age">August 2025 · All ages</span>
+            <a href="#" class="activity-link">Join →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="activity-card fade-up">
+        <div class="activity-img ai-teal">🏆</div>
+        <div class="activity-body">
+          <div class="activity-type">Annual Awards</div>
+          <h3><span data-lang="en" class="lang-active">DBKU Green Kampung Awards 2025</span><span data-lang="bm">Anugerah Kampung Hijau DBKU 2025</span></h3>
+          <p><span data-lang="en" class="lang-active">The most anticipated event of the year. 10 award categories. Champions crowned by the DBKU Mayor. Live Green Score reveal.</span><span data-lang="bm">Acara paling ditunggu-tunggu sepanjang tahun. 10 kategori anugerah. Juara ditabalkan oleh Datuk Bandar DBKU. Pendedahan Skor Hijau langsung.</span></p>
+          <div class="activity-footer">
+            <span class="activity-age">December 2025</span>
+            <a href="#" class="activity-link">Learn more →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="activity-card fade-up">
+        <div class="activity-img ai-blue">🧑‍💻</div>
+        <div class="activity-body">
+          <div class="activity-type">Youth Programme</div>
+          <h3><span data-lang="en" class="lang-active">Green Youth Leadership Camp</span><span data-lang="bm">Kem Kepimpinan Belia Hijau</span></h3>
+          <p><span data-lang="en" class="lang-active">Empowering young leaders from all 54 KJM to become Green Ambassadors for their communities. Skills, action plans, real impact.</span><span data-lang="bm">Memperkasakan pemimpin muda dari semua 54 KJM untuk menjadi Duta Hijau bagi komuniti mereka. Kemahiran, pelan tindakan, impak sebenar.</span></p>
+          <div class="activity-footer">
+            <span class="activity-age">Age 15–35</span>
+            <a href="#" class="activity-link">Apply →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ STATS / IMPACT ═══════════════════ -->
+<section class="stats-strip" id="impact">
+  <div class="container center" style="max-width:700px;">
+    <div class="section-label">
+      <span data-lang="en" class="lang-active">Our Green Impact</span>
+      <span data-lang="bm">Impak Hijau Kami</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang="en" class="lang-active">54 communities. One green movement. 📈</span>
+      <span data-lang="bm">54 komuniti. Satu gerakan hijau. 📈</span>
+    </h2>
+    <p class="section-sub center">
+      <span data-lang="en" class="lang-active">Every tree planted, every bag of waste collected, every family that participates — it all adds up to a greener Kuching Utara.</span>
+      <span data-lang="bm">Setiap pokok yang ditanam, setiap beg sisa yang dikutip, setiap keluarga yang menyertai — semuanya menyumbang kepada Kuching Utara yang lebih hijau.</span>
+    </p>
+  </div>
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card fade-up"><div class="stat-icon">🏘️</div><div class="stat-num count-num" data-target="54">0</div><div class="stat-label"><span data-lang="en" class="lang-active">KJM Communities</span><span data-lang="bm">Komuniti KJM</span></div></div>
+      <div class="stat-card fade-up"><div class="stat-icon">🌳</div><div class="stat-num count-num" data-target="2400">0</div><div class="stat-label"><span data-lang="en" class="lang-active">Trees Planted</span><span data-lang="bm">Pokok Ditanam</span></div></div>
+      <div class="stat-card fade-up"><div class="stat-icon">👥</div><div class="stat-num count-num" data-target="8500">0</div><div class="stat-label"><span data-lang="en" class="lang-active">Volunteers</span><span data-lang="bm">Sukarelawan</span></div></div>
+      <div class="stat-card fade-up"><div class="stat-icon">⏱️</div><div class="stat-num count-num" data-target="12000">0</div><div class="stat-label"><span data-lang="en" class="lang-active">Volunteer Hours</span><span data-lang="bm">Jam Sukarela</span></div></div>
+      <div class="stat-card fade-up"><div class="stat-icon">♻️</div><div class="stat-num count-num" data-target="45">0</div><div class="stat-label"><span data-lang="en" class="lang-active">Tonnes Recycled</span><span data-lang="bm">Tan Dikitar Semula</span></div></div>
+      <div class="stat-card fade-up"><div class="stat-icon">👨‍👩‍👧</div><div class="stat-num count-num" data-target="15000">0</div><div class="stat-label"><span data-lang="en" class="lang-active">Families Engaged</span><span data-lang="bm">Keluarga Terlibat</span></div></div>
+      <div class="stat-card fade-up"><div class="stat-icon">🌺</div><div class="stat-num count-num" data-target="120">0</div><div class="stat-label"><span data-lang="en" class="lang-active">Beautification Projects</span><span data-lang="bm">Projek Kecantikan</span></div></div>
+      <div class="stat-card fade-up"><div class="stat-icon">🧑‍🌾</div><div class="stat-num count-num" data-target="38">0</div><div class="stat-label"><span data-lang="en" class="lang-active">Community Gardens</span><span data-lang="bm">Kebun Komuniti</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ KJM DIRECTORY ═══════════════════ -->
+<section class="directory" id="directory">
+  <div class="container center" style="max-width:700px;">
+    <div class="section-label">
+      <span data-lang="en" class="lang-active">KJM Community Directory</span>
+      <span data-lang="bm">Direktori Komuniti KJM</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang="en" class="lang-active">Meet all <span class="text-green">54 KJM</span> communities 🏘️</span>
+      <span data-lang="bm">Kenali semua <span class="text-green">54 KJM</span> komuniti 🏘️</span>
+    </h2>
+    <p class="section-sub center">
+      <span data-lang="en" class="lang-active">Every Kejiranan Mesra community in Kuching Utara has a profile, a Green Score, and a chance to be champion.</span>
+      <span data-lang="bm">Setiap komuniti Kejiranan Mesra di Kuching Utara mempunyai profil, Skor Hijau, dan peluang untuk menjadi juara.</span>
+    </p>
+  </div>
+
+  <div class="container">
+    <div class="kjm-grid">
+      <!-- 54 KJM cards -->
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 1</div><div class="kjm-name">Taman Samarahan</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 2</div><div class="kjm-name">Kampung Senari</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 3</div><div class="kjm-name">Taman Stutong</div><div class="kjm-badge">🏆 Champion</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 4</div><div class="kjm-name">Batu Kawa</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 5</div><div class="kjm-name">Matang Jaya</div><div class="kjm-badge">🌱 New</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 6</div><div class="kjm-name">Kota Samarahan</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 7</div><div class="kjm-name">Rembus Jaya</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 8</div><div class="kjm-name">Petra Jaya</div><div class="kjm-badge">🏆 Champion</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 9</div><div class="kjm-name">Taman Desa</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 10</div><div class="kjm-name">Batu Kawah</div><div class="kjm-badge">🌱 New</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 11</div><div class="kjm-name">Senadin</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 12</div><div class="kjm-name">Taman Uni</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 13</div><div class="kjm-name">Stapok</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 14</div><div class="kjm-name">Tabuan Jaya</div><div class="kjm-badge">🏆 Champion</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 15</div><div class="kjm-name">Batu 10</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 16</div><div class="kjm-name">Demak Laut</div><div class="kjm-badge">🌱 New</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 17</div><div class="kjm-name">Kampung Pinang</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 18</div><div class="kjm-name">Rampangi</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 19</div><div class="kjm-name">Siol Kandis</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 20</div><div class="kjm-name">Kota Padawan</div><div class="kjm-badge">🌱 New</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 21</div><div class="kjm-name">Batu Bukit</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 22</div><div class="kjm-name">Gita</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 23</div><div class="kjm-name">Taman Miri</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 24</div><div class="kjm-name">Batu Lintang</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 25</div><div class="kjm-name">Kuching Utara A</div><div class="kjm-badge">🏆 Champion</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 26</div><div class="kjm-name">Kuching Utara B</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 27</div><div class="kjm-name">Batu Kawa Baru</div><div class="kjm-badge">🌱 New</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 28</div><div class="kjm-name">Semariang</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 29</div><div class="kjm-name">Tanjung Bundong</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 30</div><div class="kjm-name">Kampung Baru</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 31</div><div class="kjm-name">Buntal</div><div class="kjm-badge">🌱 New</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 32</div><div class="kjm-name">Muara Tuang</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 33</div><div class="kjm-name">Taman Sahabat</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 34</div><div class="kjm-name">Pandan Jaya</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 35</div><div class="kjm-name">Matang</div><div class="kjm-badge">🏆 Champion</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 36</div><div class="kjm-name">Bau Road</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 37</div><div class="kjm-name">Kota Samarahan 2</div><div class="kjm-badge">🌱 New</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 38</div><div class="kjm-name">Taman Hui Sing</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 39</div><div class="kjm-name">Kpg. Gita Baru</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 40</div><div class="kjm-name">Samarahan</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 41</div><div class="kjm-name">Taman Tabuan</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 42</div><div class="kjm-name">Lorong Setia</div><div class="kjm-badge">🌱 New</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 43</div><div class="kjm-name">Rembus</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 44</div><div class="kjm-name">Jalan Matang</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 45</div><div class="kjm-name">Taman Bukit Mas</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 46</div><div class="kjm-name">Kpg. Buntal Baru</div><div class="kjm-badge">🌱 New</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 47</div><div class="kjm-name">Taman Sukma</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 48</div><div class="kjm-name">Kpg. Tengah</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 49</div><div class="kjm-name">Batu Kawa Utama</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 50</div><div class="kjm-name">Pusat Bandar KU</div><div class="kjm-badge">🏆 Champion</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 51</div><div class="kjm-name">Taman Baiduri</div><div class="kjm-badge">🌱 New</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 52</div><div class="kjm-name">Kpg. Kudei</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 53</div><div class="kjm-name">Jalan Puncak</div><div class="kjm-badge">🌟 Active</div></div>
+      <div class="kjm-card fade-up"><div class="kjm-num">KJM 54</div><div class="kjm-name">Sungai Tapang</div><div class="kjm-badge">🌟 Active</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ LEADERBOARD ═══════════════════ -->
+<section class="leaderboard" id="leaderboard">
+  <div class="container center" style="max-width:700px;">
+    <div class="section-label">
+      <span data-lang="en" class="lang-active">Green Score Leaderboard</span>
+      <span data-lang="bm">Papan Skor Hijau</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang="en" class="lang-active">Who's leading the <span class="text-green">green race</span>? 🏆</span>
+      <span data-lang="bm">Siapa memimpin <span class="text-green">perlumbaan hijau</span>? 🏆</span>
+    </h2>
+    <p class="section-sub center">
+      <span data-lang="en" class="lang-active">Live Green Score rankings updated monthly. Top KJMs earn the DBKU Green Champion title and exclusive recognition at the annual awards.</span>
+      <span data-lang="bm">Kedudukan Skor Hijau dikemas kini bulanan. KJM teratas mendapat gelaran Juara Hijau DBKU dan pengiktirafan eksklusif pada anugerah tahunan.</span>
+    </p>
+  </div>
+
+  <div class="container" style="max-width:800px;">
+    <div class="lb-table">
+      <div class="lb-row fade-up" style="background:linear-gradient(135deg,#fff8e6,#fffdf5); border:2px solid #f59e0b;">
+        <div class="lb-rank gold">🥇</div>
+        <div class="lb-info">
+          <div class="lb-name">KJM 3 · Taman Stutong</div>
+          <div class="lb-sub">45 volunteers · 3 beautification projects · 8 clean-ups this year</div>
+          <div class="lb-bar-wrap"><div class="lb-bar" style="width:96%;"></div></div>
+        </div>
+        <div class="lb-score"><div class="lb-pts">960</div><div class="lb-unit">Green Points</div></div>
+      </div>
+
+      <div class="lb-row fade-up" style="background:linear-gradient(135deg,#f8fafc,#fff); border:2px solid #94a3b8;">
+        <div class="lb-rank silver">🥈</div>
+        <div class="lb-info">
+          <div class="lb-name">KJM 14 · Tabuan Jaya</div>
+          <div class="lb-sub">38 volunteers · Community garden champion · 500kg recycled</div>
+          <div class="lb-bar-wrap"><div class="lb-bar" style="width:87%;"></div></div>
+        </div>
+        <div class="lb-score"><div class="lb-pts">870</div><div class="lb-unit">Green Points</div></div>
+      </div>
+
+      <div class="lb-row fade-up" style="background:linear-gradient(135deg,#fff4ef,#fff); border:2px solid #c2784d;">
+        <div class="lb-rank bronze">🥉</div>
+        <div class="lb-info">
+          <div class="lb-name">KJM 8 · Petra Jaya</div>
+          <div class="lb-sub">62 trees planted · Youth leadership award · 7 events held</div>
+          <div class="lb-bar-wrap"><div class="lb-bar" style="width:82%;"></div></div>
+        </div>
+        <div class="lb-score"><div class="lb-pts">820</div><div class="lb-unit">Green Points</div></div>
+      </div>
+
+      <div class="lb-row fade-up">
+        <div class="lb-rank" style="color:var(--green-deep);font-size:1.1rem;">4</div>
+        <div class="lb-info">
+          <div class="lb-name">KJM 25 · Kuching Utara A</div>
+          <div class="lb-sub">Green Innovation winner · Solar lighting project</div>
+          <div class="lb-bar-wrap"><div class="lb-bar" style="width:76%;"></div></div>
+        </div>
+        <div class="lb-score"><div class="lb-pts">760</div><div class="lb-unit">Green Points</div></div>
+      </div>
+
+      <div class="lb-row fade-up">
+        <div class="lb-rank" style="color:var(--green-deep);font-size:1.1rem;">5</div>
+        <div class="lb-info">
+          <div class="lb-name">KJM 35 · Matang</div>
+          <div class="lb-sub">Recycling race leader · 800kg waste diverted from landfill</div>
+          <div class="lb-bar-wrap"><div class="lb-bar" style="width:72%;"></div></div>
+        </div>
+        <div class="lb-score"><div class="lb-pts">720</div><div class="lb-unit">Green Points</div></div>
+      </div>
+
+      <div class="lb-row fade-up">
+        <div class="lb-rank" style="color:var(--muted);font-size:1.1rem;">6</div>
+        <div class="lb-info">
+          <div class="lb-name">KJM 50 · Pusat Bandar KU</div>
+          <div class="lb-sub">Beautification 2nd place · Most improved KJM this quarter</div>
+          <div class="lb-bar-wrap"><div class="lb-bar" style="width:68%;"></div></div>
+        </div>
+        <div class="lb-score"><div class="lb-pts">680</div><div class="lb-unit">Green Points</div></div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:2rem;">
+      <a href="#directory" class="btn-secondary" style="display:inline-flex;">
+        <span data-lang="en" class="lang-active">📋 View All 54 KJM Rankings</span>
+        <span data-lang="bm">📋 Lihat Semua 54 Kedudukan KJM</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ ESG DASHBOARD ═══════════════════ -->
+<section class="esg" id="esg">
+  <div class="container center" style="max-width:700px;">
+    <div class="section-label">
+      <span data-lang="en" class="lang-active">ESG Impact Dashboard</span>
+      <span data-lang="bm">Papan Pemuka Impak ESG</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang="en" class="lang-active">Every action, <span class="text-green">every number, counted</span> 📊</span>
+      <span data-lang="bm">Setiap tindakan, <span class="text-green">setiap angka, dikira</span> 📊</span>
+    </h2>
+    <p class="section-sub center">
+      <span data-lang="en" class="lang-active">Transparent, measurable ESG metrics for DBKU's Green Kampung Challenge — aligned to Malaysia's sustainability goals and UN SDGs.</span>
+      <span data-lang="bm">Metrik ESG yang telus dan terukur bagi Cabaran Kampung Hijau DBKU — selaras dengan matlamat kelestarian Malaysia dan SDG PBB.</span>
+    </p>
+  </div>
+
+  <div class="container">
+    <div class="esg-dashboard fade-up">
+      <div class="esg-header">
+        <div class="esg-title-block">
+          <h3>📊 Green Community ESG Dashboard</h3>
+          <p>
+            <span data-lang="en" class="lang-active">All 54 KJM · DBKU Kuching Utara · Updated Monthly</span>
+            <span data-lang="bm">Semua 54 KJM · DBKU Kuching Utara · Dikemas kini Bulanan</span>
+          </p>
+        </div>
+        <div class="live-badge"><div class="live-dot"></div>
+          <span data-lang="en" class="lang-active">LIVE DATA</span>
+          <span data-lang="bm">DATA LANGSUNG</span>
+        </div>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-box"><div class="icon">🏘️</div><div class="number text-green">54</div><div class="label"><span data-lang="en" class="lang-active">Active KJM Communities</span><span data-lang="bm">Komuniti KJM Aktif</span></div></div>
+        <div class="metric-box"><div class="icon">🌳</div><div class="number text-earth">2,400+</div><div class="label"><span data-lang="en" class="lang-active">Trees Planted</span><span data-lang="bm">Pokok Ditanam</span></div></div>
+        <div class="metric-box"><div class="icon">♻️</div><div class="number text-green">45T</div><div class="label"><span data-lang="en" class="lang-active">Waste Recycled</span><span data-lang="bm">Sisa Dikitar Semula</span></div></div>
+        <div class="metric-box"><div class="icon">👥</div><div class="number text-earth">8,500+</div><div class="label"><span data-lang="en" class="lang-active">Volunteers Engaged</span><span data-lang="bm">Sukarelawan Terlibat</span></div></div>
+        <div class="metric-box"><div class="icon">👨‍👩‍👧</div><div class="number text-green">15,000+</div><div class="label"><span data-lang="en" class="lang-active">Families Participating</span><span data-lang="bm">Keluarga Menyertai</span></div></div>
+        <div class="metric-box"><div class="icon">🌺</div><div class="number text-earth">120</div><div class="label"><span data-lang="en" class="lang-active">Beautification Projects</span><span data-lang="bm">Projek Kecantikan</span></div></div>
+        <div class="metric-box"><div class="icon">🧑‍🌾</div><div class="number text-green">38</div><div class="label"><span data-lang="en" class="lang-active">Community Gardens</span><span data-lang="bm">Kebun Komuniti</span></div></div>
+        <div class="metric-box"><div class="icon">🌱</div><div class="number text-earth">↑32%</div><div class="label"><span data-lang="en" class="lang-active">Green Score Avg. Increase</span><span data-lang="bm">Peningkatan Purata Skor Hijau</span></div></div>
+        <div class="metric-box"><div class="icon">⏱️</div><div class="number text-green">12K</div><div class="label"><span data-lang="en" class="lang-active">Volunteer Hours Logged</span><span data-lang="bm">Jam Sukarela Direkod</span></div></div>
+      </div>
+
+      <div>
+        <p style="font-size:0.78rem; font-weight:800; letter-spacing:1px; color:var(--muted); text-transform:uppercase; margin-bottom:0.8rem;">
+          <span data-lang="en" class="lang-active">UN Sustainable Development Goals Alignment</span>
+          <span data-lang="bm">Penjajaran Matlamat Pembangunan Mampan PBB</span>
+        </p>
+        <div class="sdg-row">
+          <span class="sdg-badge" style="background:#ffe4e0;color:#c0392b;">SDG 3 · Good Health</span>
+          <span class="sdg-badge" style="background:#dbf3fc;color:#0c7ea8;">SDG 11 · Sustainable Cities</span>
+          <span class="sdg-badge" style="background:#e3f3da;color:#3d7a2c;">SDG 13 · Climate Action</span>
+          <span class="sdg-badge" style="background:#e6f6da;color:#458223;">SDG 15 · Life on Land</span>
+          <span class="sdg-badge" style="background:#fcefd6;color:#a8761e;">SDG 12 · Responsible Consumption</span>
+          <span class="sdg-badge" style="background:#e0e7f0;color:#34527a;">SDG 17 · Partnerships</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ GET INVOLVED ═══════════════════ -->
+<section class="get-involved" id="involve">
+  <div class="container center" style="max-width:700px;">
+    <div class="section-label">Join the Movement</div>
+    <h2 class="section-title">
+      <span data-lang="en" class="lang-active">How will <span class="text-green">you</span> build a greener kampung? 🌿</span>
+      <span data-lang="bm">Bagaimana <span class="text-green">anda</span> akan membina kampung yang lebih hijau? 🌿</span>
+    </h2>
+    <p class="section-sub center">
+      <span data-lang="en" class="lang-active">Every resident, youth, leader, school, NGO and business has a role to play. Join My Green Kampung Challenge today.</span>
+      <span data-lang="bm">Setiap penduduk, belia, pemimpin, sekolah, NGO dan perniagaan mempunyai peranan untuk dimainkan. Sertai Cabaran Kampung Hijau Saya hari ini.</span>
+    </p>
+  </div>
+
+  <div class="container">
+    <div class="involve-grid">
+      <a href="#" class="involve-card fade-up"><div class="involve-icon">🏡</div><h3><span data-lang="en" class="lang-active">Residents</span><span data-lang="bm">Penduduk</span></h3><p><span data-lang="en" class="lang-active">Participate in monthly challenges, earn Green Points, and make your neighbourhood shine.</span><span data-lang="bm">Sertai cabaran bulanan, kumpul Mata Hijau, dan jadikan kejiranan anda bersinar.</span></p></a>
+      <a href="#" class="involve-card fade-up"><div class="involve-icon">🧑‍🦱</div><h3><span data-lang="en" class="lang-active">Youth Leaders</span><span data-lang="bm">Pemimpin Belia</span></h3><p><span data-lang="en" class="lang-active">Lead your KJM. Organise events. Become a DBKU Green Youth Ambassador.</span><span data-lang="bm">Pimpin KJM anda. Anjurkan acara. Jadi Duta Belia Hijau DBKU.</span></p></a>
+      <a href="#" class="involve-card fade-up"><div class="involve-icon">🤝</div><h3><span data-lang="en" class="lang-active">KJM Leaders</span><span data-lang="bm">Pemimpin KJM</span></h3><p><span data-lang="en" class="lang-active">Register your KJM, track your Green Score, and lead your community to champion status.</span><span data-lang="bm">Daftar KJM anda, jejak Skor Hijau, dan pimpin komuniti anda ke status juara.</span></p></a>
+      <a href="#" class="involve-card fade-up"><div class="involve-icon">🏫</div><h3><span data-lang="en" class="lang-active">Schools</span><span data-lang="bm">Sekolah</span></h3><p><span data-lang="en" class="lang-active">Partner with a KJM. Run green clubs. Students earn DBKU Green Hero certificates.</span><span data-lang="bm">Bermitra dengan KJM. Jalankan kelab hijau. Pelajar mendapat sijil Wira Hijau DBKU.</span></p></a>
+      <a href="#" class="involve-card fade-up"><div class="involve-icon">🏢</div><h3><span data-lang="en" class="lang-active">Corporate CSR</span><span data-lang="bm">CSR Korporat</span></h3><p><span data-lang="en" class="lang-active">Sponsor a KJM, fund green projects, and get measurable ESG impact reports for your company.</span><span data-lang="bm">Taja KJM, biayai projek hijau, dan dapatkan laporan impak ESG yang terukur untuk syarikat anda.</span></p></a>
+      <a href="#" class="involve-card fade-up"><div class="involve-icon">💚</div><h3><span data-lang="en" class="lang-active">NGOs & Partners</span><span data-lang="bm">NGO & Rakan</span></h3><p><span data-lang="en" class="lang-active">Collaborate on community programmes, bring expertise, and amplify green impact across Kuching Utara.</span><span data-lang="bm">Bekerjasama dalam program komuniti, bawa kepakaran, dan perkuat impak hijau di seluruh Kuching Utara.</span></p></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CTA BANNER ═══════════════════ -->
+<div class="cta-banner">
+  <div class="container">
+    <h2>
+      <span data-lang="en" class="lang-active">Our communities can transform. <span class="text-green">Together.</span> 💚</span>
+      <span data-lang="bm">Komuniti kita boleh berubah. <span class="text-green">Bersama.</span> 💚</span>
+    </h2>
+    <p>
+      <span data-lang="en" class="lang-active">Register your KJM, join a monthly green challenge, or contact DBKU to bring this platform to your community.</span>
+      <span data-lang="bm">Daftar KJM anda, sertai cabaran hijau bulanan, atau hubungi DBKU untuk membawa platform ini ke komuniti anda.</span>
+    </p>
+    <div class="btns">
+      <a href="#" class="btn-primary">
+        <span data-lang="en" class="lang-active">🌿 Register Your KJM</span>
+        <span data-lang="bm">🌿 Daftar KJM Anda</span>
+      </a>
+      <a href="#" class="btn-secondary">
+        <span data-lang="en" class="lang-active">📩 Contact DBKU</span>
+        <span data-lang="bm">📩 Hubungi DBKU</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" style="text-decoration:none;display:inline-flex;align-items:center;gap:10px;">
+        <div style="width:36px;height:36px;background:linear-gradient(140deg,var(--green),var(--green-deep));border-radius:50% 0 50% 50%;display:flex;align-items:center;justify-content:center;font-size:1rem;">🌿</div>
+        <span style="font-family:'Baloo 2',sans-serif;font-size:1.1rem;font-weight:800;color:#fff;">MY <em style="color:#4ade80;font-style:normal;">GREEN KAMPUNG</em></span>
+      </a>
+      <p>
+        <span data-lang="en" class="lang-active">A digital community engagement platform empowering all 54 KJM communities in Kuching Utara to build greener, cleaner and more liveable neighbourhoods — together.</span>
+        <span data-lang="bm">Platform penglibatan komuniti digital yang memperkasakan semua 54 komuniti KJM di Kuching Utara untuk membina kejiranan yang lebih hijau, bersih dan selesa — bersama-sama.</span>
+      </p>
+      <p class="footer-tagline">✨ Bersih. Hijau. Mesra. Bersama.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4><span data-lang="en" class="lang-active">Programme</span><span data-lang="bm">Program</span></h4>
+      <ul>
+        <li><a href="#about"><span data-lang="en" class="lang-active">About</span><span data-lang="bm">Tentang</span></a></li>
+        <li><a href="#journey"><span data-lang="en" class="lang-active">Roadmap</span><span data-lang="bm">Pelan Hala Tuju</span></a></li>
+        <li><a href="#challenges"><span data-lang="en" class="lang-active">Green Challenges</span><span data-lang="bm">Cabaran Hijau</span></a></li>
+        <li><a href="#activities"><span data-lang="en" class="lang-active">Activities</span><span data-lang="bm">Aktiviti</span></a></li>
+        <li><a href="#esg"><span data-lang="en" class="lang-active">ESG Impact</span><span data-lang="bm">Impak ESG</span></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4><span data-lang="en" class="lang-active">Community</span><span data-lang="bm">Komuniti</span></h4>
+      <ul>
+        <li><a href="#directory"><span data-lang="en" class="lang-active">KJM Directory</span><span data-lang="bm">Direktori KJM</span></a></li>
+        <li><a href="#leaderboard"><span data-lang="en" class="lang-active">Leaderboard</span><span data-lang="bm">Papan Markah</span></a></li>
+        <li><a href="#activities"><span data-lang="en" class="lang-active">Events</span><span data-lang="bm">Acara</span></a></li>
+        <li><a href="#"><span data-lang="en" class="lang-active">Gallery</span><span data-lang="bm">Galeri</span></a></li>
+        <li><a href="#"><span data-lang="en" class="lang-active">Success Stories</span><span data-lang="bm">Kisah Kejayaan</span></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4><span data-lang="en" class="lang-active">Get Involved</span><span data-lang="bm">Sertai Kami</span></h4>
+      <ul>
+        <li><a href="#involve"><span data-lang="en" class="lang-active">Register KJM</span><span data-lang="bm">Daftar KJM</span></a></li>
+        <li><a href="#involve"><span data-lang="en" class="lang-active">Youth Programme</span><span data-lang="bm">Program Belia</span></a></li>
+        <li><a href="#involve"><span data-lang="en" class="lang-active">Corporate CSR</span><span data-lang="bm">CSR Korporat</span></a></li>
+        <li><a href="#involve"><span data-lang="en" class="lang-active">School Partner</span><span data-lang="bm">Rakan Sekolah</span></a></li>
+        <li><a href="#"><span data-lang="en" class="lang-active">Contact DBKU</span><span data-lang="bm">Hubungi DBKU</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>
+      <span data-lang="en" class="lang-active">© 2025 My Green Kampung Challenge · A DBKU Kejiranan Mesra Programme · Powered by KOBIS Berhad · Kuching Utara, Sarawak</span>
+      <span data-lang="bm">© 2025 Cabaran Kampung Hijau Saya · Program Kejiranan Mesra DBKU · Dikuasakan oleh KOBIS Berhad · Kuching Utara, Sarawak</span>
+    </p>
+    <div class="footer-partners">
+      <span class="partner-pill">🏛️ DBKU</span>
+      <span class="partner-pill">🌿 KOBIS</span>
+      <span class="partner-pill">🤝 KJM</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════ JAVASCRIPT ═══════════════════ -->
+<script>
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    el.classList.toggle('lang-active', el.getAttribute('data-lang') === lang);
+  });
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.05, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+function animateCounter(el) {
+  const target = parseInt(el.getAttribute('data-target'));
+  const duration = 1600;
+  const step = target / (duration / 16);
+  let current = 0;
+  const timer = setInterval(() => {
+    current += step;
+    if (current >= target) { current = target; clearInterval(timer); }
+    el.textContent = Math.floor(current).toLocaleString() + (target > 100 ? '+' : '');
+  }, 16);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+      entry.target.classList.add('counted');
+      animateCounter(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.count-num').forEach(el => counterObserver.observe(el));
+
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.background = window.scrollY > 50 ? 'rgba(255,255,255,0.98)' : 'rgba(255,255,255,0.92)';
+});
+
+document.querySelectorAll('.pillar-card, .toolkit-card, .activity-card, .involve-card, .stat-card, .tl-content').forEach((el, i) => {
+  el.style.transitionDelay = `${(i % 4) * 0.06}s`;
+});
+</script>
+</body>
+</html>
