@@ -1,6 +1,6 @@
-# My Green Kampung Challenge
+# My Green Kampung Challenge — Community ESG Participation Portal
 
-> **Maturity:** Interactive community-ESG concept demonstration
+> **Maturity:** Working public concept prototype · static multilingual experience · no operational backend
 
 A multilingual front-end concept for helping neighbourhoods discover environmental challenges, compare community activity and visualise a possible ESG participation programme.
 
@@ -49,7 +49,7 @@ Displayed communities, rankings, activities, dates, counters and impact figures 
 
 ## Delivery role
 
-**Ts. Zaiwin Kassim** provided product framing, rapid-prototype direction, delivery coordination and portfolio documentation with the **KOBIS AI Prodigy Team**. The work demonstrates a proposed digital engagement model; it does not claim programme commissioning, public adoption or measured environmental outcomes.
+**Zaiwin Kassim, MBA** provided product framing, rapid-prototype direction, delivery coordination and portfolio documentation with the **KOBIS AI Prodigy Team**. The work demonstrates a proposed digital engagement model; it does not claim programme commissioning, public adoption or measured environmental outcomes.
 
 ## Responsible-use boundaries
 
@@ -68,6 +68,29 @@ Displayed communities, rankings, activities, dates, counters and impact figures 
 - No verified live community directory or leaderboard feed
 - No operational ESG measurement or downloadable reporting
 - No automated tests or production monitoring are evidenced in this repository
+
+## 7–14-day validation sprint
+
+The next valuable step is to validate the programme journey before building accounts, databases or automated scoring.
+
+Use synthetic or expressly authorised information for two sample communities and conduct five supervised walkthroughs with a mix of community leaders, residents and programme operators. The sprint should test whether participants can:
+
+1. understand the programme purpose and six-month journey;
+2. identify a challenge relevant to their community;
+3. distinguish demonstration rankings and counters from verified results;
+4. understand what evidence would be required for challenge completion;
+5. find the correct human contact or next-step pathway;
+6. use the four-language interface without material loss of meaning;
+7. identify privacy, consent and moderation concerns before submission;
+8. agree on the minimum data fields required for a governed pilot.
+
+Publish a dated `VALIDATION.md` containing tester roles, scenarios, pass/fail findings, confusing language, missing controls and resulting documentation changes. Do not publish participant names, contact details, photographs, community disputes or unverified environmental claims.
+
+## Licence guidance
+
+No open-source licence is currently declared. Public visibility does not grant permission to reuse the code, branding, content, organisation names or programme materials.
+
+Keep the repository under a proprietary or portfolio-use position until ownership, third-party marks, images, translations and any public-sector or community-specific material have been reviewed. A reusable community edition should be separated from client- or programme-specific content before any open-source licence is considered.
 
 ## Run locally
 
